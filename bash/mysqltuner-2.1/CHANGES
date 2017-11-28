@@ -1,0 +1,74 @@
+Apr 9 2010:
+mysqltuner.pl
+made it so Perl didn't spit out an error if a value was undefined.  Now the error is handled gracefully by the program.
+
+changed tuner-default.cnf to not have table_cache (it has table_open_cache)
+changed Uptime to Uptime_since_flush_status for most rates in tuner-default.cnf
+
+added:
+slow query rate
+reads per sec
+writes per sec
+rate of sorts that cause temporary tables
+rate of open files
+rate of aborted connections
+rate of aborted clients
+
+Mar 2 2010:
+mysqltuner.pl
+corrected the versions for SHOW GLOBAL STATUS and SHOW GLOBAL VARIABLES
+Fixes https://bugs.launchpad.net/mysqltuner/+bug/530285
+
+added tuner-default_pre_5_1.cnf
+These are workarounds for https://bugs.launchpad.net/mysqltuner/+bug/530456
+
+Feb 25 2010:
+mysqltuner.pl:
+took out the invalid reference to the print_all() function
+error for not using forcemem when a host is specified is no longer thrown if the host specified is 127.0.0.1
+
+tuner-default.cnf:
+Now checks for both table_cache and table_open_cache, specifying that the former is pre 5.1
+
+Feb 11 2010:
+tuner-default.cnf:
+Changed query cache lowmem prunes per day to a straight low memory prunes by time check
+Added query cache minimum result size - warn if it's set to the default
+Added rate of creating temporary disk tables (previously had only %)
+Added rate of creating temporary tables (memory or disk)
+Added table cache size to the output
+
+Dec 2 2009:
+mysqltuner.pl:
+changed the split character to |||
+
+tuner-default.cnf
+changed the split character to |||
+Changed the following to use readable byte-numbers (ie, anything >1024 bytes is in Kb, similar for Mb and Gb):
+  query_cache_size
+Changed the label for query_cache_size from "Query cache" to "Query cache size"
+Changed the label of "InnoDB" to "Is InnoDB enabled?"
+Changed thread cache hit rate to complain if Threads_created/Connections >20 (was <20, but < is a better hit rate)
+Separated out Sorts, Joins/scans and temporary table sections
+Fixed the threshold for MyISAM concurrent inserts - old test was "0", new test is "=0"
+Added the following variable printouts:
+ sort_buffer_size printout
+ read_rnd_buffer_size printout
+ tmp_table_size
+ max_heap_table_size
+ slow_launch_time
+ Max_used_connections
+ max_connections
+Added the following checks:
+ rate of sorted rows 
+ rate of reading first index entry
+ rate of reading fixed position
+ rate of reading next table row
+ rate of joins without indexes (removed Joins w/out indexes, Joins w/out indexes per day)
+ MyISAM key buffer size
+ max % MyISAM key buffer ever used
+ rate of table open
+ Table lock wait rate
+ Total threads created
+ Threads that are slow to launch
+ % aborted clients
