@@ -1,4 +1,4 @@
-# Stable Packages Mirror
+# /etc/apt/sources.list
 deb http://mirrors.kernel.org/debian/ jessie main contrib non-free
 deb-src http://mirrors.kernel.org/debian/ jessie main contrib non-free
 # Update Mirror
