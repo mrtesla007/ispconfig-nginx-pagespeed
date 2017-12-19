@@ -9,7 +9,7 @@ HOSTNAME_FQDN=`hostname -f`;
 	JKV="2.19"  # Jailkit Version für Installation ->  Aktuelle Version: http://olivier.sessink.nl/jailkit/jailkit
 
 	MYSQL_ROOT_USR="root"
-	MYSQL_ROOT_PWD="Dan!el1992"
+	MYSQL_ROOT_PWD="password"
 	MYSQL_ROOT_DB="dbispconfig"
 	MYSQL_HOST="localhost"
 
