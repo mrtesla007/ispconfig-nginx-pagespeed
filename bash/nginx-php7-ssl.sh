@@ -17,12 +17,12 @@ apt-get -y install php7.0 php7.0-fpm php7.0-common php7.0-gd php7.0-mysql php7.0
 sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php/7.0/fpm/php.ini
 sed -i "s/;date.timezone =/date.timezone=\"Europe\/Zurich\"/" /etc/php/7.0/fpm/php.ini
 
-echo -n "Installing needed Programs for PHP and NGINX... "
+echo "Installing needed Programs for PHP and NGINX... "
 apt-get -yqq install php5-cli php5-mysql php5-mcrypt mcrypt imagemagick memcached curl tidy snmp > /dev/null 2>&1
 service php7.0-fpm reload
 apt-get -yqq install fcgiwrap
 echo -e "[${green}DONE${NC}]\n"
 
-echo -n "Installing Lets Encrypt... "	
+echo "Installing Lets Encrypt... "	
 apt-get -yqq install certbot > /dev/null 2>&1
 echo -e "[${green}DONE${NC}]\n"
