@@ -1,4 +1,12 @@
 #!/bin/bash
+echo "Füge Dot.deb Repo hinzu.. "
+wget https://www.dotdeb.org/dotdeb.gpg
+apt-key add dotdeb.gpg
+echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list
+echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list
+apt-get update
+echo -e "[${green}DONE${NC}]\n"
+
 echo "Installiere Nginx PageSpeed mit Full HTTP/2 Support"
 apt-get -y install nginx-extras
 service nginx start
